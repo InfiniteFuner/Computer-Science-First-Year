@@ -1,0 +1,174 @@
+Getters return, setters initialize variables into something, constructors initialize variables related to making an object of a class. Constructors initialize objects, setters initialize specific variables. A Wrapper class in Java is a class whose object wraps or contains primitive data types. 
+
+GenericList<Record> is a linked list of records. The T in GenericList<T> is replaced by Record when you initialize GenericList<Record>. I could be asked to do a recursive method in the exam.
+
+1a. of Practice Exam -
+
+Jax has obtained timings from a single data set run on three different sorting algorithms. Is the information from this one data set enough to determine which of the three algorithms will perform best on a very small data set? Briefy explain.
+
+No. We don't know anything about the shape of the graph or how much they vary, since the data set being used is very small. Not enough information.
+
+1b.
+
+You want the method to be effective regardless of if any instances of the Math class actually exist (which, for the most part, isn't the case). You want to be able to actually use it.
+
+3 of Practice Exam -
+The array is not the object a (same for b). With b = a, b and a refer to the same array. 
+
+2 of Practice Exam - 
+calc2 is not recursive, and more iterative than anything else. The only reason why it uses itself as a method is to create the effect of a loop. calc3 is recursive, because the first method call is still held onto until the very end (is still relevant) and isn't just a stand-in for a regular recursive call. calc 1 and 2 are iterative. 
+
+I need to know how to do sorting (just go over insertion sort, bubble sort, and algorithmic sorts). == will cause it to compare where each object is pointing to. If two variables refer to the same object/location, then it will become true. If it's two different student records with the exact same attributes (what we'd assume is true), then it's false. 
+
+1d and e of Practice Exam - 
+r1 will not be the same as r2 (false) with ==. With e, both == and equals will lead to true, because r1 becomes the same as r2, two names for the same object, so true. 1d -> false and false, 1e -> true and true.
+
+2e of Practice Exam - 
+
+All are O(n). If it's a nested for loop, it's probably O(n^2).
+
+Make a method static when you want to use it universally (without doing Object.method(---)), to do logistics, and make it non-static when you want it attached to specific objects.
+
+
+public void addOwl(int i, Owl newOwl) {
+	if (data[i] == null) {
+		data[i] = newOwl;
+		if (newOwl.getAge() > data[oldestIndex].getAge) {
+			oldestIndex = i;
+		}
+	}
+}
+
+public boolean removeOwl(String name) {
+	for (int i = 0; i < data.length; i++) {
+		if (name.compareTo(data[i].getName()) == 0) {
+			data[i] = null;
+			return true;	
+		}
+	}
+	return false;
+}
+
+public static void selectionSort(int[] a) {
+
+	int i, j, minIndex, temp;
+	int counter = 0;
+	for (i = 0; i < a.length - 1; i++) {
+		minIndex = i;
+		for (j = i+1; j < a.length; j++) {
+			counter++;
+			if (a[j] < a[minIndex])
+				minIndex = j;
+		}
+		temp = a[minIndex];
+		a[minIndex] = a[i];
+		a[i] = temp;
+	}
+	System.out.println("Iterations through inner loop: " + counter);
+} // selectionSort
+
+With programming, define what you're asked to do before thinking about the how with implementation. An interface has faster design, easier maintenance and resilience to change, and flexibility. Java is good at graphic user interfaces. To create an interface, replace the word class with interface (public interface SimpleInterface). An interface nearly exclusively contain method signatures and use implements keyword to implement. A class may implement multiple interfaces and each interface signature must be inmplemented. Interfaces specify what, not how. Generally, you want to start with the most simple interface and add onto it later when more complexity is demanded. It's the foundation, not the whole project. The public interface Comparable<T> contains only a single signature which the programmer must implement. You should implement it whenever you have two instances that are of the same type since those instances will be comparable. You can't create an object of an interface (can create a variable, though), but you can create an object of the classes it's used in. 
+
+Person gs2 = new Gradstudent();
+Gradstudent gs3 = (Gradstudent) gs2;
+This type of type casting narrows the type from person (a more general class/category) into a more specific kind of class, gradstudent. In this instance, the only reason why we type cast (Gradstudent) gs2 is for the compiler. An interpreter would have no problem without the type cast, but the compiler wouldn't interpret Person gs2 the same way. In the case of gs2.toString(), we get a type of static typechecking. 
+
+double var = 3.1416926;
+int x = (int) var;
+This makes the double into an int. 
+
+Super means that anything can inherit a specific instance. If you have a variable set to something in a class, you can use super to access an attribute of that name and it's contents from a parent class. This is extremely rare. A second use is to access a constructor from the parent class using super in the class with the same name.
+
+Lecture 28 - Checked vs. Unchecked Exceptions
+
+A checked exception is where the compiler checks/requires the user checked for exceptions. For unchecked exceptions, the compiler doesn't require the same of the user even if they still may. Methods that throw checked exceptions must have a "throws" clause on signature, but not if the checked exception is caught. As a programmer, we are responsible for other people's mistakes using your program.
+
+Divide by Zero Exception objects are empty (DivBy0Exception e = new DivBy0Exception("This is a test.")).
+Decide where you want it in the hierachy of throwables (unchecked, errors, runtime, etc). Super refers to an immediate ancestor (the class the current class inherited from) and an instance from there.
+
+try { 	// code that could throw a checked excpetion must be in a try
+		// try block is option for code that could throw non-checked
+		// exceptions--which is any code
+	if (b == 0.0)
+		throw new DivBy0Exception("First throw from divide");
+}
+
+For the catch block, it's trying to catch indidual exceptions starting at divide exceptions and then, try to catch higher ones on the hierarchy (runtime exception or array bound exceptions). The finally statement always executes. In the code, though, it doesn't get much farther than finally due to exceptions caught a few times.
+
+My code is gone. My code is gone. My code is gone. My code is gone. My code is gone. My code is gone. My code is gone.
+
+LinkedList quiz will have stuff from Project 3 and explain the complexity of an algorithm similar to what I did on Project 3.
+
+Binary Trees - Another Higher Order Data Structure
+
+CSCI trees grow "upside down" and their basic components are levels, depth, and the root (base of the tree, level 1). The empty tree is a tree of depth zero. They can have left and right children, parents, siblings, subtrees, leaves, and there can be complete and full trees.
+
+				O
+		Left	^	Right
+			   / \
+			  O	  O			
+
+Each step down is a level down. A null tree would be a level -1 tree. A full binary tree is where all of the rows are completely full (sometimes, called "perfect"). A complete tree is where each row is filled except last row which is filled left to right.
+
+Compact trees vs. sparse (stringy) trees. Compact trees are generally more efficient and tightly packed, code wise. Sparse code allows for more error.
+
+For stringy trees, what happens is that the level/depth number and the number of nodes is almost synonymous, which is a bad thing (very unequal and unstable). 
+
+public T getleftmostData() { // recursive method of traversing a binary tree
+	if (left == null) {
+		return data;
+	}
+	else {
+		return left.getleftmostData();
+		return this;
+	}
+}
+
+public T getLeftMostData() {
+	BTNGen<T> temp = this;
+	while (temp.getLeft() !- null) {
+		temp = temp.getLeft();
+	}
+	return temp.getData();
+}
+
+There are four ways to traverse a binary tree. Inorder, Preorder, Postorder, or newOrder.
+
+removeLeftMost recursively goes down the tree (the left most branch of the tree down) until there is no more left branch, and in that case, returns the right branch after it becomes null. "this" is a way of referring to the program's self (the instance of the class being called), this is one of the two pronouns, the other one being super.
+
+BINARY SEARCH TREES ---------------------------------------------------------------------------
+
+add(T item) 
+- starts at root, proceeds either to the left or right depending on how item compares with the data in the node. Continue until a null branch, then add the item at the location/node.
+
+The first non-efficient methods uses a while (not done) loop to iterate through the binary tree until it comes across a null node with a value greater than the item input, then adds a node into the null location. The reason it's inefficient is because, depending on the structure of the tree, it could have slower run times. 
+
+There are three main cases with a remove method. One is to remove the item at the root with no left branch, one is removing an item not at the root with no left branch (or the other way around), one is at a node with a left branch. 
+
+Each node is the root of a subtree. 
+
+Binary Searching a Sorted Array - 
+
+public static int search(int[] a, int first, int last, int target) {
+
+	int middle;
+	while (first <= last) {
+		middle = (first + last)/2;
+		if (target == a[middle]) {
+			return middle;
+		} else if (target < a[middle]) {
+			last = middle - 1;
+		} else {
+			first = middle + 1;
+		}
+		return -1;
+	}
+}
+
+In this code, there are three base cases. If the middle is the target, the program completes, and if not, and the middle is less than the target, it sets last to one less than the middle (if it's middle, the program will never end). If it doesn't return any of the three base cases, it returns -1/null.
+
+REVIEW ---------------------------------------------------------------------------------------------------------------------------------------------
+
+Merge Sort -
+
+It's fast, a complexity of (nlogn) requires an extra O(n). Similar to Owl lab. With merge sort, treat the complexity the same way you would a binary search tree (cut the length of the arrays into two, into two, and the depth of that branching path is the complexity). The n is the time it takes to merge, the log n is the depth of the tree. 
